@@ -9,6 +9,8 @@ import vitor.kato.uolhost_backend.model.Player;
 import vitor.kato.uolhost_backend.model.dtos.PlayerDto;
 import vitor.kato.uolhost_backend.service.PlayerService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -22,4 +24,8 @@ public class PlayerController {
         return new ResponseEntity<>(newPlayer, HttpStatus.CREATED);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Player>> getAllPlayers() {
+        return new ResponseEntity<>(service.getAllPlayers(), HttpStatus.OK);
+    }
 }

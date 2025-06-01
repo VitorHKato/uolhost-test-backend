@@ -9,8 +9,8 @@ import vitor.kato.uolhost_backend.model.dtos.PlayerDto;
 
 @Entity(name = "players")
 @Table(name = "players")
-@Getter
-@Setter
+//@Getter
+//@Setter
 @EqualsAndHashCode(of = "id")
 public class Player {
 
@@ -41,4 +41,51 @@ public class Player {
         this.groupType = playerDto.groupType();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCodiname() {
+        return codiname;
+    }
+
+    public void setCodiname(String codiname) {
+        this.codiname = codiname;
+    }
+
+    public GroupType getGroupType() {
+        return groupType;
+    }
+
+    public void setGroupType(GroupType groupType) {
+        this.groupType = groupType;
+    }
 }

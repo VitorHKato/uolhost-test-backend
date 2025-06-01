@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Getter
+//@Getter
 public class CodinameService {
 
     @Autowired
@@ -28,8 +28,8 @@ public class CodinameService {
     @Autowired
     private Environment env;
 
-    private List<String> avengersCodinameList = new ArrayList<>();
-    private List<String> justiceLeagueCodinameList = new ArrayList<>();
+    private final List<String> avengersCodinameList = new ArrayList<>();
+    private final List<String> justiceLeagueCodinameList = new ArrayList<>();
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -44,7 +44,7 @@ public class CodinameService {
 
             // Pega o "codiname" de cada nó do Json e adiciona na lista
             for(JsonNode item: avengers) {
-                this.avengersCodinameList.add(item.get("codiname").asText());
+                this.avengersCodinameList.add(item.get("codinome").asText());
             }
 
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class CodinameService {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(env.getProperty("justice.league"));
 
-            NodeList codinameList = document.getElementsByTagName("codiname");
+            NodeList codinameList = document.getElementsByTagName("codinome");
 
             for (int i = 0; i < codinameList.getLength(); i++) {
                 Element codinameElement = (Element) codinameList.item(i);
@@ -70,5 +70,13 @@ public class CodinameService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<String> getAvengersCodinameList() {
+        return avengersCodinameList;
+    }
+
+    public List<String> getJusticeLeagueCodinameList() {
+        return justiceLeagueCodinameList;
     }
 }
